@@ -38,4 +38,9 @@ public class BookRepository {
     public List<Book> findAll() {
         return books;
     }
+
+    public Book createBook(Book book) {
+        books.add(book);
+        return book;
+    }
 }

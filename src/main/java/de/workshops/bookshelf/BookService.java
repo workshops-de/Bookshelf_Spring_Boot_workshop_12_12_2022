@@ -41,4 +41,8 @@ public class BookService {
     private boolean hasAuthor(Book book, String author) {
         return !StringUtils.hasText(author) || book.getAuthor().contains(author);
     }
+
+    public Book createBook(Book book) {
+        return repository.createBook(book);
+    }
 }
