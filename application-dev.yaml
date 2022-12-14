@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://tai.db.elephantsql.com/idbgdfkx # adapt URL to match your database instance, replacing SUBDOMAIN and DATABASE_NAME
+    driver-class-name: org.postgresql.Driver
+    username: idbgdfkx # adapt username accordingly
+    # set PG_PASSWORD in your environment, e.g., by running "export PG_PASSWORD=..." in the command line
+    password: ${PG_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

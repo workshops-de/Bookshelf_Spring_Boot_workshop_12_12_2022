@@ -2,6 +2,31 @@ application:
   title: @project.name@
   version: @project.version@
 
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: debug
+
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 1 # disabling concurrent connections due to free plan limitations
+  jpa:
+    open-in-view: false
+    generate-ddl: true # By default, DDL statements will only be generated for embedded databases.
+    # By default, Spring Boot will try to populate the database from data.sql on startup,
+    # i.e. before JPA has the opportunity to generate DDL statements from classes annotated with @Entity.
+    defer-datasource-initialization: true
+  sql:
+    init:
+      # The default value is 'embedded', which only works for in-memory databases.
+      # Since we're using a 'non-embedded' database here, we now need to set this to 'always'.
+      mode: always
 ---
 
 spring:
@@ -12,3 +37,7 @@ spring:
 
 server:
   port: 8090
+
+springdoc:
+  api-docs:
+    enabled: false
